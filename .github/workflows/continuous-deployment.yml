@@ -1,0 +1,30 @@
+name: Continuous Deployment
+
+on: workflow_dispatch
+
+jobs:
+  build:
+    name: Build and deploy app
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: .nvmrc
+
+      - name: Install packages
+        run: npm install
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Build & Deploy
+        run: npx semantic-release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          HOMEBREW_TOOLS_TOKEN: ${{ secrets.HOMEBREW_TOOLS_TOKEN }}
+          GIT_EMAIL: ${{ secrets.GIT_EMAIL }}

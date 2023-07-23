@@ -1,0 +1,49 @@
+{
+  "branches": ["master"],
+  "plugins": [
+    [
+      "@semantic-release/commit-analyzer",
+      {
+        "releaseRules": [{ "type": "chore", "release": "patch" }]
+      }
+    ],
+    "@semantic-release/release-notes-generator",
+    "@semantic-release/changelog",
+    [
+      "@semantic-release/exec",
+      {
+        "publishCmd": "./tools/package-google-cloud-redis.sh ${nextRelease.version}"
+      }
+    ],
+    "@semantic-release/npm",
+    "@semantic-release/git",
+    [
+      "@semantic-release/github",
+      {
+        "assets": [
+          {
+            "path": "bin/google-cloud-redis-linux.tar.gz",
+            "name": "google-cloud-redis-linux-${nextRelease.version}.tar.gz",
+            "label": "Linux distribution"
+          },
+          {
+            "path": "bin/google-cloud-redis-macos.tar.gz",
+            "name": "google-cloud-redis-macos-${nextRelease.version}.tar.gz",
+            "label": "MacOS distribution"
+          },
+          {
+            "path": "bin/google-cloud-redis-win.tar.gz",
+            "name": "google-cloud-redis-win-${nextRelease.version}.tar.gz",
+            "label": "Windows distribution"
+          }
+        ]
+      }
+    ],
+    [
+      "@semantic-release/exec",
+      {
+        "publishCmd": "./tools/publish-brew-formula.sh ${nextRelease.version}"
+      }
+    ]
+  ]
+}
