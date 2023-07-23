@@ -5,13 +5,15 @@
 = ⛅ google-cloud-redis
 
 image:https://img.shields.io/github/package-json/v/edosrecki/google-cloud-redis-cli/main?color=blue&label=google-cloud-redis["google-cloud-redis CLI Version"]
-image:https://img.shields.io/github/workflow/status/edosrecki/google-cloud-redis-cli/Continuous Integration["Build Status", link="https://github.com/edosrecki/google-cloud-redis-cli/actions"]
+image:https://img.shields.io/github/actions/workflow/status/edosrecki/google-cloud-redis-cli/continuous-integration.yml["Build Status", link="https://github.com/edosrecki/google-cloud-redis-cli/actions"]
 
 A CLI app which establishes a connection to a private Google Cloud Redis instance and port-forwards it to a local machine.
 
 Connection is established by running an https://www.stunnel.org/[stunnel] pod in a Google Kubernetes Engine cluster which runs in the same VPC network as the private Cloud Redis instance. Connection is then port-forwarded to the local machine, where a user can connect to the instance on localhost. Configurations in the app can be saved for practical future usage.
 
 The app relies on local `gcloud` and `kubectl` commands which have to be configured and authenticated with the proper Google Cloud user and GKE Kubernetes cluster.
+
+image::screenshot.png[]
 
 ---
 
