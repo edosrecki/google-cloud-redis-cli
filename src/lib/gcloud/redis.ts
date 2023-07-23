@@ -1,5 +1,9 @@
 import memoize from 'memoizee'
-import { execCommandMultilineWithHeaderAsync } from '../util/exec'
+import {
+  execCommand,
+  execCommandMultilineWithHeader,
+  execCommandMultilineWithHeaderAsync,
+} from '../util/exec'
 
 export type GoogleCloudRedisInstance = {
   name: string
@@ -14,6 +18,14 @@ const parseInstance = (instance: string): GoogleCloudRedisInstance => {
 
   return { name, region, host, port }
 }
+
+export const fetchGoogleCloudRedisRegions = memoize((project: string): string[] => {
+  return execCommandMultilineWithHeader(`
+      gcloud redis regions list \
+        --project=${project} \
+        --quiet
+    `)
+})
 
 const fetchGoogleCloudRedisInstancesForRegion = memoize(
   async (project: string, region: string): Promise<GoogleCloudRedisInstance[]> => {
@@ -38,3 +50,17 @@ export const fetchGoogleCloudRedisInstances = memoize(
     return instances.flat()
   }
 )
+
+export const fetchGoogleCloudRedisCertificate = (
+  project: string,
+  region: string,
+  instanceName: string
+): string => {
+  return execCommand(`
+    gcloud redis instances describe ${instanceName} \
+      --project=${project} \
+      --region=${region} \
+      --format='value(serverCaCerts[0].cert)' \
+      --quiet
+  `)
+}

@@ -3,8 +3,8 @@ import inquirer from 'inquirer'
 import autocomplete from 'inquirer-autocomplete-prompt'
 import { execConfiguration, getConfiguration } from '../../lib/configurations'
 import { ConfigurationChooseAnswers } from '../../lib/types'
-import { configurationPrompt } from './prompts/configuration'
-import { confirmationPrompt } from './prompts/confirmation'
+import { configurationPrompt } from '../../lib/prompts/configuration'
+import { confirmationPrompt } from '../../lib/prompts/confirmation'
 
 export const runConfiguration = async () => {
   inquirer.registerPrompt('autocomplete', autocomplete)

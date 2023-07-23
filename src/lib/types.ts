@@ -1,5 +1,6 @@
-import { GoogleCloudRedisInstance } from './gcloud/redis-instances'
+import { GoogleCloudRedisInstance } from './gcloud/redis'
 
+// configurations
 export type Configuration = {
   configurationName: string
   googleCloudRedisInstance: GoogleCloudRedisInstance
@@ -18,4 +19,14 @@ export type ConfigurationCreateAnswers = Configuration & {
 export type ConfigurationChooseAnswers = {
   configuration: Configuration
   confirmation?: boolean
+}
+
+// secrets
+export type SecretCreateAnswers = {
+  googleCloudProject: string
+  googleCloudRedisInstance: GoogleCloudRedisInstance
+  kubernetesContext: string
+  kubernetesNamespace: string
+  kubernetesSecretName: string
+  confirmation: boolean
 }

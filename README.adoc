@@ -13,6 +13,10 @@ Connection is established by running an https://www.stunnel.org/[stunnel] pod in
 
 The app relies on local `gcloud` and `kubectl` commands which have to be configured and authenticated with the proper Google Cloud user and GKE Kubernetes cluster.
 
+The app also needs an existing Kubernetes Secret containing the Google Cloud Redis certificate to exist in the Kubernetes 
+cluster. You can download a Redis certificate file and create a Kubernetes secret manually, or you can use
+`google-cloud-redis secrets create` command to do so.
+
 image::screenshot.png[]
 
 ---
@@ -43,7 +47,7 @@ _Package_ sections.
 * Install https://kubernetes.io/docs/tasks/tools/#kubectl[`kubectl`] tool
 * Authenticate to Google Cloud: `gcloud auth login`
 * Get GKE cluster credentials: `gcloud container clusters get-credentials`
-* Download Google Cloud Redis certificate and store it in a Kubernetes secret: `kubectl create secret generic $SECRET --namespace $NAMESPACE --from-file=./server-ca.pem`
+* Download Google Cloud Redis certificate and store it in a Kubernetes secret (see `google-cloud-redis secrets create`).
 
 === Run
 [source,bash]
@@ -51,15 +55,16 @@ _Package_ sections.
 # Help
 google-cloud-redis help
 
+# Create Kubernetes secret containing Gogle Cloud Redis certificate
+google-cloud-redis secrets create
+
 # Create (or override existing) configuration
 google-cloud-redis configurations create
 
 # Run configuration (interactive mode)
 google-cloud-redis configurations run
-
 # Run configuration (non-interactive mode)
 google-cloud-redis configurations run $NAME
-
 # HINT: Add alias
 alias myDbProd="google-cloud-redis configurations run $NAME"
 

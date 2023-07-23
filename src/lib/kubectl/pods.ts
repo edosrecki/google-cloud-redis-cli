@@ -1,3 +1,4 @@
+import yaml from 'js-yaml'
 import { bold, cyan } from 'chalk'
 import { Pod } from 'kubernetes-models/v1'
 import { execCommand, execCommandAttached } from '../util/exec'
@@ -59,10 +60,10 @@ export const runCloudRedisProxyPod = (pod: CloudRedisProxyPod): string => {
       ],
     },
   })
-  const podJson = JSON.stringify(podModel.toJSON())
+  const podYaml = yaml.dump(podModel.toJSON())
 
   return execCommand(`
-    echo '${podJson}' | kubectl create --context=${pod.context} -f -
+    echo "${podYaml}" | kubectl create --context=${pod.context} -f -
   `)
 }
 

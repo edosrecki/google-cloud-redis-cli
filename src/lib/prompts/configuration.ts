@@ -1,7 +1,7 @@
-import { getConfigurations } from '../../../lib/configurations'
-import { Configuration, ConfigurationChooseAnswers } from '../../../lib/types'
-import { searchByKey } from '../../../lib/util/search'
-import { tryCatch } from '../../../lib/util/error'
+import { getConfigurations } from '../configurations'
+import { Configuration } from '../types'
+import { tryCatch } from '../util/error'
+import { searchByKey } from '../util/search'
 
 const formatConfiguration = (configuration: Configuration) => {
   return {
@@ -11,7 +11,7 @@ const formatConfiguration = (configuration: Configuration) => {
   }
 }
 
-const source = tryCatch((answers: ConfigurationChooseAnswers, input?: string) => {
+const source = tryCatch((_, input?: string) => {
   const configurations = getConfigurations()
   const filtered = searchByKey(configurations, 'configurationName', input)
 
