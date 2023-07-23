@@ -62,7 +62,7 @@ export const runCloudRedisProxyPod = (pod: CloudRedisProxyPod): string => {
   const podJson = JSON.stringify(podModel.toJSON())
 
   return execCommand(`
-    echo '${podJson}' | kubectl create -f -
+    echo '${podJson}' | kubectl create --context=${pod.context} -f -
   `)
 }
 
