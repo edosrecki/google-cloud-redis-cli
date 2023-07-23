@@ -4,7 +4,7 @@
 
 = ⛅ google-cloud-redis
 
-image:https://img.shields.io/github/package-json/v/edosrecki/google-cloud-redis-cli/master?color=blue&label=google-cloud-redis["google-cloud-redis CLI Version"]
+image:https://img.shields.io/github/package-json/v/edosrecki/google-cloud-redis-cli/main?color=blue&label=google-cloud-redis["google-cloud-redis CLI Version"]
 image:https://img.shields.io/github/workflow/status/edosrecki/google-cloud-redis-cli/Continuous Integration["Build Status", link="https://github.com/edosrecki/google-cloud-redis-cli/actions"]
 
 A CLI app which establishes a connection to a private Google Cloud Redis instance and port-forwards it to a local machine.
