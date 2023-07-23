@@ -3,7 +3,7 @@ name: Continuous Integration
 on: push
 
 jobs:
-  build:
+  build-app:
     name: Build app
     runs-on: ubuntu-latest
     strategy:
@@ -26,3 +26,17 @@ jobs:
 
       - name: Build
         run: npm run bundle
+
+  build-redis-stunnel:
+    name: Build redis-stunnel Docker image
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Build Docker image
+        uses: docker/build-push-action@v4
+        with:
+          context: ./docker
+          push: false
+          tags: osrecki/redis-stunnel:latest
