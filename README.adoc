@@ -43,6 +43,7 @@ _Package_ sections.
 * Install https://kubernetes.io/docs/tasks/tools/#kubectl[`kubectl`] tool
 * Authenticate to Google Cloud: `gcloud auth login`
 * Get GKE cluster credentials: `gcloud container clusters get-credentials`
+* Download Google Cloud Redis certificate and store it in a Kubernetes secret: `kubectl create secret generic $SECRET --namespace $NAMESPACE --from-file=./server-ca.pem`
 
 === Run
 [source,bash]
