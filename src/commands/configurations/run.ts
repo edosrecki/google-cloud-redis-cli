@@ -2,9 +2,9 @@ import { red } from 'chalk'
 import inquirer from 'inquirer'
 import autocomplete from 'inquirer-autocomplete-prompt'
 import { execConfiguration, getConfiguration } from '../../lib/configurations'
-import { ConfigurationChooseAnswers } from '../../lib/types'
 import { configurationPrompt } from '../../lib/prompts/configuration'
 import { confirmationPrompt } from '../../lib/prompts/confirmation'
+import { ConfigurationChooseAnswers } from '../../lib/types'
 
 export const runConfiguration = async () => {
   inquirer.registerPrompt('autocomplete', autocomplete)

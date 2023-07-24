@@ -1,4 +1,6 @@
+import boxen from 'boxen'
 import memoize from 'memoizee'
+import { Configuration } from '../types'
 import {
   execCommand,
   execCommandMultilineWithHeader,
@@ -63,4 +65,28 @@ export const fetchGoogleCloudRedisCertificate = (
       --format='value(serverCaCerts[0].cert)' \
       --quiet
   `)
+}
+
+export const printGoogleCloudRedisAuthString = (configuration: Configuration): void => {
+  if (!configuration.googleCloudRedisPrintAuth) {
+    return
+  }
+
+  const { googleCloudProject, googleCloudRedisInstance } = configuration
+
+  const authString = execCommand(`
+    gcloud redis instances get-auth-string ${googleCloudRedisInstance.name} \
+      --project=${googleCloudProject} \
+      --region=${googleCloudRedisInstance.region} \
+      --format='value(authString)' \
+      --quiet
+  `)
+
+  const box = boxen(authString, {
+    title: 'Redis AUTH string',
+    titleAlignment: 'center',
+    borderColor: 'yellow',
+    padding: { top: 0, right: 1, bottom: 0, left: 1 },
+  })
+  console.log(box)
 }

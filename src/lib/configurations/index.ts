@@ -1,5 +1,6 @@
 import exitHook from 'exit-hook'
-import { omit, kebabCase } from 'lodash'
+import { kebabCase, omit } from 'lodash'
+import { printGoogleCloudRedisAuthString } from '../gcloud/redis'
 import {
   deletePod,
   portForward,
@@ -13,7 +14,7 @@ import { store } from './store'
 
 const storeKey = 'configurations' as const
 const searchKey = 'configurationName' as const
-const excludeProperties = ['googleCloudProject', 'confirmation'] as const
+const excludeProperties = ['confirmation'] as const
 
 export const configurationPath = store.path
 
@@ -56,5 +57,6 @@ export const execConfiguration = (configuration: Configuration) => {
 
   runCloudRedisProxyPod(pod)
   waitForPodReady(pod)
+  printGoogleCloudRedisAuthString(configuration)
   portForward(pod)
 }

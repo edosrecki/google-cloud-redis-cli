@@ -16,6 +16,7 @@ export const store = new Conf<Schema>({
         type: 'object',
         properties: {
           configurationName: { type: 'string' },
+          googleCloudProject: { type: 'string' },
           googleCloudRedisInstance: {
             type: 'object',
             properties: {
@@ -30,6 +31,7 @@ export const store = new Conf<Schema>({
           kubernetesSecret: { type: 'string' },
           kubernetesSecretKey: { type: 'string' },
           localPort: { type: 'number' },
+          googleCloudRedisPrintAuth: { type: 'boolean' },
         },
       },
     },
