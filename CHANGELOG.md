@@ -1,3 +1,16 @@
+# [1.2.0](https://github.com/edosrecki/google-cloud-redis-cli/compare/v1.1.1...v1.2.0) (2023-07-24)
+
+
+### Bug Fixes
+
+* **docker:** use USER 1000 ([e814d7e](https://github.com/edosrecki/google-cloud-redis-cli/commit/e814d7e90fb2f14bc6da3c161b9652ba4e3706c3))
+
+
+### Features
+
+* notify user if old configuration version ([12c1507](https://github.com/edosrecki/google-cloud-redis-cli/commit/12c15078f52fd0d9d280fe4d468cd4c504332adb))
+* print Redis AUTH string when connecting ([0fc7a2f](https://github.com/edosrecki/google-cloud-redis-cli/commit/0fc7a2fa37bffc35d158506bb1b3ef9e8eb606ff))
+
 ## [1.1.1](https://github.com/edosrecki/google-cloud-redis-cli/compare/v1.1.0...v1.1.1) (2023-07-24)
 
 # [1.1.0](https://github.com/edosrecki/google-cloud-redis-cli/compare/v1.0.0...v1.1.0) (2023-07-23)
