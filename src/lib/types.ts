@@ -2,6 +2,7 @@ import { GoogleCloudRedisInstance } from './gcloud/redis'
 
 // configurations
 export type Configuration = {
+  configurationVersion?: number
   configurationName: string
   googleCloudProject: string
   googleCloudRedisInstance: GoogleCloudRedisInstance

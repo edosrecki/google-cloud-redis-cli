@@ -1,3 +1,5 @@
+import boxen from 'boxen'
+import { blue } from 'chalk'
 import exitHook from 'exit-hook'
 import { kebabCase, omit } from 'lodash'
 import { printGoogleCloudRedisAuthString } from '../gcloud/redis'
@@ -10,7 +12,7 @@ import {
 import { Configuration, ConfigurationCreateAnswers } from '../types'
 import { appendOrReplaceByKey, deleteByKey, findByKey } from '../util/array'
 import { randomString } from '../util/string'
-import { store } from './store'
+import { currentConfigurationVersion, store } from './store'
 
 const storeKey = 'configurations' as const
 const searchKey = 'configurationName' as const
@@ -26,7 +28,10 @@ export const getConfiguration = (name: string): Configuration | undefined => {
 }
 
 export const saveConfiguration = (answers: ConfigurationCreateAnswers): void => {
-  const configuration = omit(answers, excludeProperties)
+  const configuration = {
+    configurationVersion: currentConfigurationVersion,
+    ...omit(answers, excludeProperties),
+  }
 
   const configurations = store.get(storeKey)
   appendOrReplaceByKey(configurations, configuration, searchKey)
@@ -39,7 +44,30 @@ export const deleteConfiguration = (configuratioName: string): void => {
   store.set(storeKey, configurations)
 }
 
+const checkConfigurationVersion = ({ configurationVersion }: Configuration): void => {
+  if (configurationVersion && configurationVersion >= currentConfigurationVersion) {
+    return
+  }
+
+  const text =
+    `Your configuration was created with older version of the app.\n` +
+    `Recreate it to use latest features:\n\n` +
+    `> ${blue('google-cloud-redis')} configurations create`
+
+  const box = boxen(text, {
+    title: 'Warning',
+    titleAlignment: 'center',
+    borderColor: 'yellow',
+    margin: { top: 1, right: 0, bottom: 1, left: 0 },
+    padding: { top: 0, right: 1, bottom: 0, left: 1 },
+  })
+
+  console.log(box)
+}
+
 export const execConfiguration = (configuration: Configuration) => {
+  checkConfigurationVersion(configuration)
+
   const pod = {
     name: `redis-proxy-${kebabCase(configuration.configurationName)}-${randomString()}`,
     context: configuration.kubernetesContext,

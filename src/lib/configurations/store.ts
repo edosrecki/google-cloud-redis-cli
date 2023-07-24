@@ -5,6 +5,8 @@ type Schema = {
   configurations: Configuration[]
 }
 
+export const currentConfigurationVersion = 2
+
 export const store = new Conf<Schema>({
   configName: 'configurations',
   projectSuffix: '',
@@ -15,6 +17,7 @@ export const store = new Conf<Schema>({
       items: {
         type: 'object',
         properties: {
+          configurationVersion: { type: 'number' },
           configurationName: { type: 'string' },
           googleCloudProject: { type: 'string' },
           googleCloudRedisInstance: {
