@@ -60,7 +60,7 @@
     "@types/shelljs": "0.8.12",
     "@types/update-notifier": "5.1.0",
     "@typescript-eslint/eslint-plugin": "6.7.0",
-    "@typescript-eslint/parser": "6.1.0",
+    "@typescript-eslint/parser": "6.7.2",
     "eslint": "8.45.0",
     "eslint-config-prettier": "8.8.0",
     "husky": "8.0.3",
