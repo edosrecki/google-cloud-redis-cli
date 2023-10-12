@@ -1,3 +1,10 @@
+## [1.2.2](https://github.com/edosrecki/google-cloud-redis-cli/compare/v1.2.1...v1.2.2) (2023-10-12)
+
+
+### Bug Fixes
+
+* redis instance name is missing ([c6677f7](https://github.com/edosrecki/google-cloud-redis-cli/commit/c6677f76e002f97f15f1dd57b763fe6e8900ea25))
+
 ## [1.2.1](https://github.com/edosrecki/google-cloud-redis-cli/compare/v1.2.0...v1.2.1) (2023-10-03)
 
 # [1.2.0](https://github.com/edosrecki/google-cloud-redis-cli/compare/v1.1.1...v1.2.0) (2023-07-24)
