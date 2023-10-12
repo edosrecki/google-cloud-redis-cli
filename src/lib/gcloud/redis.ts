@@ -35,7 +35,7 @@ const fetchGoogleCloudRedisInstancesForRegion = memoize(
       gcloud redis instances list \
         --project=${project} \
         --region=${region} \
-        --format='csv(displayName,locationId,host,port)' \
+        --format='csv(name,locationId,host,port)' \
         --quiet
     `)
 
