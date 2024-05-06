@@ -54,7 +54,7 @@
     "@types/inquirer": "8.2.6",
     "@types/inquirer-autocomplete-prompt": "2.0.0",
     "@types/js-yaml": "4.0.9",
-    "@types/lodash": "4.17.0",
+    "@types/lodash": "4.17.1",
     "@types/memoizee": "0.4.11",
     "@types/node": "20.11.4",
     "@types/shelljs": "0.8.15",
