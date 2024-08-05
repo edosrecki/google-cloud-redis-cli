@@ -59,7 +59,7 @@
     "@types/js-yaml": "4.0.9",
     "@types/lodash": "4.17.7",
     "@types/memoizee": "0.4.11",
-    "@types/node": "20.11.4",
+    "@types/node": "20.14.14",
     "@types/shelljs": "0.8.15",
     "@types/update-notifier": "5.1.0",
     "eslint": "9.8.0",
