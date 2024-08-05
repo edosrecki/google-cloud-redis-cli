@@ -28,7 +28,7 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "test": "npm run lint",
-    "prepare": "husky install",
+    "prepare": "husky",
     "prettify-package-json": "prettier-package-json --write"
   },
   "dependencies": {
