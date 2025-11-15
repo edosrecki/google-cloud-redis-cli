@@ -40,7 +40,7 @@
     "fuse.js": "7.1.0",
     "inquirer": "8.2.5",
     "inquirer-autocomplete-prompt": "2.0.0",
-    "js-yaml": "4.1.0",
+    "js-yaml": "4.1.1",
     "kubernetes-models": "4.5.1",
     "lodash": "4.17.21",
     "memoizee": "0.4.17",
